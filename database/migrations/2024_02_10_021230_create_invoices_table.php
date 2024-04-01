@@ -21,10 +21,10 @@ return new class extends Migration
             $table->float('charges', 15, 5);
             $table->float('total', 15, 5);
             $table->enum('type', Core::invoiceTypeList());
-            $table->string('note_en')->nullable();
-            $table->string('note_fr')->nullable();
-            $table->string('note_it')->nullable();
-            $table->string('note_ar')->nullable();
+            $table->text('note_en')->nullable();
+            $table->text('note_fr')->nullable();
+            $table->text('note_it')->nullable();
+            $table->text('note_ar')->nullable();
             $table->timestamps();
         });
     }

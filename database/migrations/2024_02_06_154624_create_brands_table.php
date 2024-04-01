@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name_fr')->unique();
             $table->string('name_it')->unique();
             $table->string('name_ar')->unique();
-            $table->string('description_en')->nullable();
-            $table->string('description_fr')->nullable();
-            $table->string('description_it')->nullable();
-            $table->string('description_ar')->nullable();
+            $table->text('description_en')->nullable();
+            $table->text('description_fr')->nullable();
+            $table->text('description_it')->nullable();
+            $table->text('description_ar')->nullable();
             $table->timestamps();
         });
     }
