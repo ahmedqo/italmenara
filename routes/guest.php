@@ -20,3 +20,4 @@ Route::post('/requests/details', [RequestController::class, 'store_action'])->na
 Route::get('/faqs', [GuestController::class, 'faq'])->name('views.guest.faq');
 Route::get('/return_policy', [GuestController::class, 'return'])->name('views.guest.return');
 Route::get('/terms_and_conditions', [GuestController::class, 'term'])->name('views.guest.term');
+Route::get('/privacy_policy', [GuestController::class, 'privacy'])->name('views.guest.privacy');

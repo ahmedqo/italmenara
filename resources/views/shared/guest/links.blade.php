@@ -15,7 +15,7 @@
     @if ($hide != 2)
         <li>
             <div class="p-4 rounded-x-huge bg-x-white flex flex-col gap-1">
-                <a href="{{ route('views.guest.term') }}"
+                <a href="{{ route('views.guest.privacy') }}"
                     class="font-x-thin text-x-black text-base outline-none underline-offset-4 hover:underline focus:underline">
                     {{ __('Privacy Policy') }}
                 </a>

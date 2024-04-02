@@ -200,7 +200,7 @@
                     </a>
                 </li>
                 <li class="w-full flex flex-wrap gap-4 items-center">
-                    <a href="#" aria-label="italmenara comercial location address"
+                    <a href="{{ route('views.guest.privacy') }}" aria-label="italmenara comercial location address"
                         class="flex-1 text-x-black text-sm font-x-thin text-start">
                         {{ __('Privacy Policy') }}
                     </a>

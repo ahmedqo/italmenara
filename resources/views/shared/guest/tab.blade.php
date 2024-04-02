@@ -20,12 +20,12 @@
             @if (is_array($txt))
                 @foreach ($txt as $itm)
                     <p>
-                        {{ $itm }}
+                        {!! $itm !!}
                     </p>
                 @endforeach
             @else
                 <p>
-                    {{ $txt }}
+                    {!! $txt !!}
                 </p>
             @endif
         </div>

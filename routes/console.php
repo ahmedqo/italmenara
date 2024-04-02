@@ -31,6 +31,7 @@ Artisan::command('sitemap:generate', function () {
         ->add(route('views.guest.faq'))
         ->add(route('views.guest.return'))
         ->add(route('views.guest.term'))
+        ->add(route('views.guest.privacy'))
         ->add(Brand::all())
         ->add(Category::all())
         ->add(Product::all())

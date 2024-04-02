@@ -1,10 +1,10 @@
 @extends('shared.core.base')
-@section('title', __('Edit Category') . ' #' . $data->id)
+@section('title', __('Edit Product') . ' #' . $data->id)
 
 @section('content')
     <div class="flex flex-col gap-2">
         <h1 class="text-center lg:text-start text-xl lg:text-2xl text-x-black font-x-thin">
-            {{ __('Edit Category') . ' #' . $data->id }}
+            {{ __('Edit Product') . ' #' . $data->id }}
         </h1>
         <div class="bg-x-white rounded-x-huge shadow-x-core p-6">
             <form action="{{ route('actions.products.patch', $data->id) }}" method="POST" enctype="multipart/form-data"

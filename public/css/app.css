@@ -451,6 +451,15 @@ os-data-visualizer::part(search):focus-within {
 }
 
 [tab][expand]>div {
-    max-height: 500px;
+    max-height: 5000px;
     opacity: 1;
+}
+
+.revert,
+.revert * {
+    all: revert;
+}
+
+.revert img {
+    max-width: 100%;
 }
