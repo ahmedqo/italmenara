@@ -630,6 +630,7 @@ rte-toolbar-dropdown-item:hover {
 rte-line-spliter {
     width: 1px;
     height: 17px;
+    display: none;
     margin: 10px auto !important;
     background: rgb(var(--black));
 }

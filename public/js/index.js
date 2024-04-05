@@ -8,6 +8,9 @@ function toggle(trigger, target) {
 }
 
 OS.$Load(function() {
+    const overlay = document.querySelector("#overlay");
+    OS.$Wrapper.classList.remove("!hidden");
+    overlay.remove();
     document.body.removeAttribute("close");
 
     toggle("#trigger", "os-sidebar");
