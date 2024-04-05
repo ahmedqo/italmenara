@@ -211,49 +211,6 @@ os-data-visualizer::part(search):focus-within {
     border-color: rgb(var(--prime) / 1);
 }
 
-.tox-tinymce {
-    background-color: rgb(var(--light)) !important;
-    border: 1px solid rgb(var(--black)) !important;
-    border-radius: var(--r-thin) !important;
-}
-
-.tox-editor-header {
-    background: rgb(var(--light)) !important;
-    box-shadow: unset !important;
-    padding: 0 !important;
-    z-index: 0 !important;
-}
-
-.tox-editor-header,
-.tox-edit-area__iframe {
-    background: rgb(var(--white)) !important;
-}
-
-.tox-editor-header {
-    border-bottom: 1px solid rgb(var(--black)) !important;
-}
-
-.tox-tbtn--select.tox-tbtn--bespoke:hover,
-.tox-tbtn--select.tox-tbtn--bespoke:focus,
-.tox-tbtn--select.tox-tbtn--bespoke:focus-within {
-    background: #cce2fa !important;
-}
-
-.tox-editor-header>div,
-.tox-editor-header [role="group"] {
-    background: transparent !important;
-}
-
-.tox-notifications-container,
-.tox-bottom-anchorbar,
-.tox-promotion,
-.tox-statusbar {
-    position: fixed !important;
-    display: none !important;
-    left: -9999px !important;
-    top: -9999px !important;
-}
-
 .x-scroll {
     overflow: overlay;
 }

@@ -19,6 +19,7 @@ const OS = {
         Option: "os-option",
         Button: "os-button",
         Topbar: "os-topbar",
+        Style: "os-style",
         Group: "os-group",
         Toast: "os-toast",
         Modal: "os-modal",
@@ -1423,6 +1424,35 @@ OS.$Theme("colors", "OS-BLACK", "29 29 29");
 document.addEventListener("DOMContentLoaded", (e) => {
     OS$LOAD.forEach((callback) => callback(e));
 });
+
+OS.$Component.Style = (function() {
+    const Style = /*css*/ `
+        :host {
+            display: none;
+        }
+    `;
+
+    const Template = /*html*/ ``;
+
+    return OS.$Component({
+        tag: OS.$Selectors.Style,
+        tpl: Template,
+        css: [Style],
+    })({
+        attrs: ["scope"],
+        props: {
+            scope: "",
+        },
+        setup: {
+            mounted() {
+                const style = document.createElement("style");
+                style.textContent = this.getAttribute("scope") ? "@scope (" + this.getAttribute("scope") + ") {" + this.textContent + "}" : this.textContent;
+                document.head.appendChild(style);
+                this.remove();
+            },
+        },
+    });
+})();
 
 OS.$Component.Wrapper = (function() {
     const Style = /*css*/ `
@@ -4675,7 +4705,7 @@ OS.$Component.Area = (function() {
                     this.props.value = this.getAttribute("value");
                     this.removeAttribute("value");
                     if (this.truty(this.props.value, [''])) {
-                        this.rules.scroll();
+                        setTimeout(this.rules.scroll, 1000);
                     }
                 }
 
@@ -8018,7 +8048,8 @@ OS.$Component.Button = (function() {
     });
 })();
 
-OS.$Component.Wrapper.define() &&
+OS.$Component.Style.define() &&
+    OS.$Component.Wrapper.define() &&
     OS.$Component.Toaster.define() &&
     OS.$Component.Toast.define() &&
     OS.$Component.Sidebar.define() &&

@@ -1711,13 +1711,21 @@ function TableVisualizer(dataVisualizer, Type, Data) {
 
 function ProductInitializer(List = [], imageTransfer) {
     ["#description_en", "#description_fr", "#description_it", "#description_ar"].forEach(editor => {
-        tinymce.init({
-            height: 200,
-            selector: editor,
-            language: Locale,
-            plugins: "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount advlist  preview code fullscreen insertdatetime", // print paste",
-            toolbar: "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
-        });
+        new RichTextEditor(editor);
+    });
+
+    document.querySelectorAll("[rte-cmd-name=fullscreenenter]").forEach(el => {
+        el.addEventListener("click", e => {
+            OS.$Wrapper.closed = true;
+            OS.$Wrapper.state.screen = false;
+        })
+    });
+
+    document.querySelectorAll("[rte-cmd-name=fullscreenexit]").forEach(el => {
+        el.addEventListener("click", e => {
+            OS.$Wrapper.closed = false;
+            OS.$Wrapper.state.screen = true;
+        })
     });
 
     if (imageTransfer) imagesUpdater(imageTransfer);

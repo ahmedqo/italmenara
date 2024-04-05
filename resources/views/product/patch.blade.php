@@ -52,7 +52,7 @@
                         @endforeach
                     </os-select>
                 </div>
-                <div class="w-full grid grid-rows-1 grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="w-full grid grid-rows-1 grid-cols-1 gap-4">
                     <os-image-transfer multiple name="images[]" class="lg:col-span-2"></os-image-transfer>
                 </div>
                 <div class="w-full grid grid-rows-1 grid-cols-1 lg:grid-cols-2 gap-4">
@@ -73,7 +73,12 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/tinymce/tinymce.min.js') }}?v={{ env('APP_VERSION') }}"></script>
+    <link rel="stylesheet" href="{{ asset('js/editor/theme.min.css') }}?v={{ env('APP_VERSION') }}" />
+    <script type="text/javascript" src="{{ asset('js/editor/rte.js') }}?v={{ env('APP_VERSION') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/editor/plugins/all_plugins.js') }}?v={{ env('APP_VERSION') }}">
+    </script>
+    <script src="{{ asset('js/editor/lang/rte-lang-' . app()->getLocale() . '.js') }}?v={{ env('APP_VERSION') }}">
+    </script>
     <script>
         const imageTransfer = document.querySelector("os-image-transfer");
         imageTransfer.default = {!! $data->Images->map(function ($Image) {
