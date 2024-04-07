@@ -146,7 +146,7 @@
             @import url({{ asset('css/app.min.css') }}?v={{ env('APP_VERSION') }});
             @import url({{ asset('css/print.min.css') }}?v={{ env('APP_VERSION') }});
         </style>
-        <img id="image-bg" src="{{ asset('img/svg/pattern.svg') }}?v={{ env('APP_VERSION') }}" />
+        <img id="image-bg" src="{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}" />
         @include('shared.page.head', [
             'core' => true,
             'ref' => $data->reference,

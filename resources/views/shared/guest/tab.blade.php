@@ -1,6 +1,6 @@
 <div tab class="flex flex-col">
     <button
-        class="flex flex-wrap items-center w-full gap-2 outline-none underline-offset-4 hover:underline focus:underline">
+        class="flex flex-wrap items-start w-full gap-2 outline-none underline-offset-4 hover:underline focus:underline">
         <svg class="pointer-events-none w-6 h-6 text-x-prime block" fill="currentColor" viewBox="0 96 960 960">
             <title>arrow icon</title>
             @if (Core::lang('ar'))
@@ -11,7 +11,7 @@
                     d="M344 805q-14-15-14-33.5t14-31.5l164-165-165-166q-14-12-13.5-32t14.5-33q13-14 31.5-13.5T407 344l199 199q6 6 10 14.5t4 17.5q0 10-4 18t-10 14L408 805q-13 13-32 12.5T344 805Z" />
             @endif
         </svg>
-        <h3 class="font-x-thin text-x-black text-base">
+        <h3 class="text-start flex-1 font-x-thin text-x-black text-base">
             {{ $ttl }}
         </h3>
     </button>
