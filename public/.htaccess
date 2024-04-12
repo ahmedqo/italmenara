@@ -1,4 +1,8 @@
 <IfModule mod_rewrite.c>
+    <IfModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/css application/json application/javascript text/xml application/xml application/xhtml+xml application/rss+xml application/atom+xml image/svg+xml
+    </IfModule>
+
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
