@@ -23,6 +23,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         //\App\Http\Middleware\SendInfoMail::class,
         \App\Http\Middleware\AssetCache::class,
+        \ErlandMuchasaj\LaravelGzip\Middleware\GzipEncodeResponse::class,
     ];
 
     /**
