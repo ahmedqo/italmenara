@@ -5,6 +5,7 @@
     <meta name="description" content="{{ Core::subString($principal->content) }}">
     <meta name="keywords"
         content="ITALMENARA, Italian craftsmanship, contemporary style, luxury fashion, haute couture, refined accessories, curated collections, online shopping, men's fashion, women's fashion, designer wear, lifestyle, elegance, sophistication">
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="ITALMENARA Home Page">
     <meta property="og:description" content="{{ Core::subString($principal->content) }}">
     <meta property="og:image" content="{{ request()->getHost() }}{{ $principal->Images[0]->Link }}">
@@ -78,6 +79,7 @@
                     @foreach ($products as $product)
                         <li data-aos="slide-up" data-aos-delay="{{ $loop->index * 300 }}">
                             @include('shared.guest.card', [
+                                'typ' => 'Product',
                                 'txt' => $product->name,
                                 'src' => $product->Images[0]->Link,
                                 'alt' => $product->name . ' image',
@@ -124,6 +126,7 @@
             <div class="w-max lg:w-full flex flex-wrap gap-4 lg:grid lg:gap-8 grid-x-{{ $categories->count() }}">
                 @foreach ($categories as $category)
                     @include('shared.guest.card', [
+                        'typ' => 'ProductCollection',
                         'att' =>
                             'data-aos=flip-' .
                             (Core::lang('ar') ? 'left' : 'right') .

@@ -6,10 +6,12 @@
         content="Discover Italmenara's privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.">
     <meta name="keywords"
         content="privacy policy, ITALMENARA, data protection, personal information, confidentiality, privacy statement">
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="ITALMENARA Privacy Policy Page">
     <meta property="og:description"
         content="Discover Italmenara's privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.">
-    <meta property="og:image" content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:image"
+        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ request()->url() }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">

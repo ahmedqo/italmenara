@@ -6,6 +6,7 @@
         content="{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}">
     <meta name="keywords"
         content="ITALMENARA, single product, luxury fashion, Italian craftsmanship, contemporary elegance, haute couture, refined accessories, designer wear, online shopping, men's fashion, women's fashion">
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ $data->name . ' | ITALMENARA' }}">
     <meta property="og:description"
         content="{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}">

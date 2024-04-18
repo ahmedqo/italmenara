@@ -1,2 +1,3 @@
+Sitemao: https://www.italmenara.com/sitemap.xml
 User-agent: *
 Disallow:

@@ -6,10 +6,12 @@
         content="Discover ITALMENARA Brands Collection, the epitome of Italian craftsmanship fused with contemporary style. Browse through meticulously crafted pieces that redefine luxury, encompassing fashion-forward apparel and refined accessories, all available online.">
     <meta name="keywords"
         content="Italian craftsmanship, contemporary style, luxury fashion, fashion-forward apparel, refined accessories, online shopping, ITALMENARA Brands Collection">
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="ITALMENARA Brands Page">
     <meta property="og:description"
         content="Discover ITALMENARA Brands Collection, the epitome of Italian craftsmanship fused with contemporary style. Browse through meticulously crafted pieces that redefine luxury, encompassing fashion-forward apparel and refined accessories, all available online.">
-    <meta property="og:image" content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:image"
+        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ request()->url() }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
@@ -37,6 +39,7 @@
         @forelse ($data as $brand)
             @include('shared.guest.card', [
                 'fit' => true,
+                'typ' => 'Brand',
                 'txt' => $brand->name,
                 'src' => $brand->Image->Link,
                 'alt' => $brand->name . ' image',

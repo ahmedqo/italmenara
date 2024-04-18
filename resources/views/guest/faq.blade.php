@@ -6,10 +6,12 @@
         content="Explore the comprehensive FAQs section of ITALMENARA for quick answers to common inquiries. Find detailed explanations on shipping, returns, sizing, and more, ensuring a seamless and informed shopping experience.">
     <meta name="keywords"
         content="FAQs, frequently asked questions, ITALMENARA, shipping, returns, sizing, customer support, online shopping assistance">
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="ITALMENARA FAQs Page">
     <meta property="og:description"
         content="Explore the comprehensive FAQs section of ITALMENARA for quick answers to common inquiries. Find detailed explanations on shipping, returns, sizing, and more, ensuring a seamless and informed shopping experience.">
-    <meta property="og:image" content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:image"
+        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ request()->url() }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">

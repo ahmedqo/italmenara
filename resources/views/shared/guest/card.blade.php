@@ -3,10 +3,11 @@
 @endphp
 
 @if ($set === 'box')
-    <div class="w-full flex flex-col">
-        <a href="{{ $url }}" aria-label="{{ $alt }}"
+    <div itemscope itemtype="https://schema.org/{{ $typ }}" class="w-full flex flex-col">
+        <a itemprop="url" href="{{ $url }}" aria-label="{{ $alt }}"
             class="relative group overflow-hidden aspect-[12/9] rounded-x-huge flex items-center justify-center outline-none">
-            <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" width="100%" height="100%"
+            <img itemprop="image" src="{{ $src }}" alt="{{ $alt }}" loading="lazy" width="100%"
+                height="100%"
                 class="bg-x-acent block w-full h-full {{ isset($fit) ? 'object-contain' : 'object-cover' }} transition-transform group-hover:scale-150 group-focus:scale-150" />
             <div
                 class="bg-x-black bg-opacity-25 text-x-white opacity-0 group-hover:opacity-100 group-focus:opacity-100 pointer-events-none transition-opacity w-full h-full absolute inset-0 flex items-center justify-center backdrop-blur-sm">
@@ -21,7 +22,7 @@
         </a>
         <div class="px-2 lg:px-4 -mt-6 z-[1]">
             <div class="shadow-x-core p-4 rounded-x-huge bg-x-white">
-                <h3 class="text-x-black text-sm lg:text-base font-x-huge text-center truncate-x-core">
+                <h3 itemprop="name" class="text-x-black text-sm lg:text-base font-x-huge text-center truncate-x-core">
                     {{ ucwords($txt) }}
                 </h3>
             </div>
@@ -30,13 +31,15 @@
 @endif
 
 @if ($set === 'show')
-    <a href="{{ $url }}" aria-label="{{ $alt }}" {{ isset($att) ? $att : '' }}
+    <a itemscope itemtype="https://schema.org/{{ $typ }}" itemprop="url" href="{{ $url }}"
+        aria-label="{{ $alt }}" {{ isset($att) ? $att : '' }}
         class="relative h-40 aspect-[16/12] lg:w-full lg:h-full group overflow-hidden rounded-x-huge flex items-center justify-center outline-none">
-        <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" width="100%" height="100%"
+        <img itemprop="image" src="{{ $src }}" alt="{{ $alt }}" loading="lazy" width="100%"
+            height="100%"
             class="bg-x-acent block w-full h-full object-cover transition-transform group-hover:scale-150 group-focus:scale-150" />
         <div
             class="from-x-black to-transparent bg-gradient-to-t lg:bg-x-black lg:from-transparent lg:bg-opacity-25 text-x-white lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 pointer-events-none lg:transition-opacity w-full h-full absolute inset-0 flex items-end lg:items-center justify-center p-4 lg:backdrop-blur-sm">
-            <h2 class="text-lg lg:text-2xl font-x-huge text-center">
+            <h2 itemprop="name" class="text-lg lg:text-2xl font-x-huge text-center">
                 {{ ucwords($txt) }}
             </h2>
         </div>

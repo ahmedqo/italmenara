@@ -6,10 +6,12 @@
         content="Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.">
     <meta name="keywords"
         content="Return policy, ITALMENARA, product returns, return procedures, eligibility criteria, customer satisfaction, online shopping">
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="ITALMENARA Return Policy Page">
     <meta property="og:description"
         content="Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.">
-    <meta property="og:image" content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:image"
+        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ request()->url() }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">

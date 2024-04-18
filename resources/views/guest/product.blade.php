@@ -6,10 +6,12 @@
         content="{{ Core::subString($seo ?? 'Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.') }}">
     <meta name="keywords"
         content="ITALMENARA, fashion, luxury, Italian craftsmanship, contemporary style, haute couture, accessories, designer wear, online shopping, men's fashion, women's fashion, curated collections">
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="ITALMENARA Products Page">
     <meta property="og:description"
         content="{{ Core::subString($seo ?? 'Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.') }}">
-    <meta property="og:image" content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:image"
+        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ request()->url() }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
@@ -97,6 +99,7 @@
         <div class="lg:col-span-3 grid grid-cols-2 grid-rows-1 lg:grid-cols-3 gap-4 lg:gap-8">
             @forelse ($data as $product)
                 @include('shared.guest.card', [
+                    'typ' => 'Product',
                     'txt' => $product->name,
                     'src' => $product->Images[0]->Link,
                     'alt' => $product->name . ' image',

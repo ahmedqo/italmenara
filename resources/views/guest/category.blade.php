@@ -6,10 +6,12 @@
         content="Unveil ITALMENARA's varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.">
     <meta name="keywords"
         content="ITALMENARA, Italian craftsmanship, contemporary elegance, haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, online shopping">
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="ITALMENARA Categories Page">
     <meta property="og:description"
         content="Unveil ITALMENARA's varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.">
-    <meta property="og:image" content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:image"
+        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ request()->url() }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
@@ -36,6 +38,7 @@
     <section class="w-full container mx-auto p-4 grid grid-rows-1 grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
         @forelse ($data as $category)
             @include('shared.guest.card', [
+                'typ' => 'ProductCollection',
                 'txt' => $category->name,
                 'src' => $category->Image->Link,
                 'alt' => $category->name . ' image',
