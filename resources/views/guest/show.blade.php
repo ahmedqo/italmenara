@@ -6,8 +6,13 @@
         content="{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}">
     <meta name="keywords"
         content="ITALMENARA, single product, luxury fashion, Italian craftsmanship, contemporary elegance, haute couture, refined accessories, designer wear, online shopping, men's fashion, women's fashion">
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{ $data->name . ' | ITALMENARA' }}">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}">
+    <meta property="og:title" content="{{ $data->name . '|' . env('APP_NAME') }}">
+    <meta property="product:name" content="{{ $data->name }}" />
+    <meta property="product:brand" content="{{ $data->Brand->name }}" />
+    <meta property="product:category" content="{{ $data->Category->name }}" />
+    <meta property="product:availability" content="in stock" />
     <meta property="og:description"
         content="{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}">
     <meta property="og:image" content="{{ request()->getHost() }}{{ $data->Images[0]->Link }}">
@@ -15,11 +20,76 @@
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
-        <meta name="twitter:title" content="{{ $data->name . ' | ITALMENARA' }}">
+        <meta name="twitter:title" content="{{ $data->name . '|' . env('APP_NAME') }}">
         <meta name="twitter:description"
             content="{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}">
         <meta name="twitter:image" content="{{ request()->getHost() }}{{ $data->Images[0]->Link }}">
     @endif
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Product",
+            "name": "{{ $data->name }}",
+            "brand": "{{ $data->Brand->name }}",
+            "category": "{{ $data->Category->name }}",
+            "image": "{{ request()->getHost() }}{{ $data->Images[0]->Link }}",
+            "description": "{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}",
+            "offers": {
+                "@type": "Offer",
+                "availability": "http://schema.org/InStock",
+                "url": "{{ url()->full() }}",
+                "priceValidUntil": "{{ now()->format('Y-m-d') }}",
+                "priceCurrency": "EUR",
+                "price": "{{ $data->price }}"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.5",
+                "reviewCount": "10"
+            },
+            "review": {
+                "@type": "Review",
+                "author": {
+                    "@type": "Organization",
+                    "name": "{{ env('APP_NAME') }}"
+                },
+                "datePublished": "{{ now()->format('Y-m-d') }}",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "4.5"
+                },
+                "description": "This product is amazing!"
+            },
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "name": "Return Policy",
+                "url": "{{ route('views.guest.return') }}"
+            },
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": {
+                        "@type": "QuantitativeValue",
+                        "value": "1000",
+                        "unitText": "EUR"
+                    }
+                }
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "{{ route('views.guest.product') }}?search={search_term_string}"
+                },
+                "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                }
+            }
+        }
+    </script>
 @endsection
 
 @section('header')

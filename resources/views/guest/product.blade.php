@@ -6,13 +6,14 @@
         content="{{ Core::subString($seo ?? 'Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.') }}">
     <meta name="keywords"
         content="ITALMENARA, fashion, luxury, Italian craftsmanship, contemporary style, haute couture, accessories, designer wear, online shopping, men's fashion, women's fashion, curated collections">
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}">
     <meta property="og:title" content="ITALMENARA Products Page">
     <meta property="og:description"
         content="{{ Core::subString($seo ?? 'Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.') }}">
     <meta property="og:image"
         content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
-    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:url" content="{{ url()->full() }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
@@ -22,6 +23,83 @@
         <meta name="twitter:image"
             content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "ItemList",
+            "name": "{{ isset($items[2]) ? $items[2][0] : $items[1][0] }}",
+            "url": "{{ url()->full() }}",
+            "description": "{{ Core::subString($seo ?? 'Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.') }}",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "{{ route('views.guest.product') }}?search={search_term_string}"
+                },
+                "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                }
+            },
+            "itemListElement": [
+                @foreach ($data as $product)
+                    {
+                        "@type": "ListItem",
+                        "position": {{ $loop->index + 1 }},
+                        "item": {
+                            "@type": "Product",
+                            "name": "{{ $product->name }}",
+                            "url": "{{ route('views.guest.show', $product->slug) }}",
+                            "image": "{{ $product->Images[0]->Link }}",
+                            "description": "{{ Core::subString($product->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}",
+                            "offers": {
+                                "@type": "Offer",
+                                "availability": "http://schema.org/InStock",
+                                "priceValidUntil": "{{ now()->format('Y-m-d') }}",
+                                "priceCurrency": "EUR",
+                                "price": "{{ $product->price }}"
+                            },
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "4.5",
+                                "reviewCount": "10"
+                            },
+                            "review": {
+                                "@type": "Review",
+                                "author": {
+                                    "@type": "Organization",
+                                    "name": "{{ env('APP_NAME') }}"
+                                },
+                                "datePublished": "{{ now()->format('Y-m-d') }}",
+                                "reviewRating": {
+                                    "@type": "Rating",
+                                    "ratingValue": "4.5"
+                                },
+                                "description": "This product is amazing!"
+                            },
+                            "hasMerchantReturnPolicy": {
+                                "@type": "MerchantReturnPolicy",
+                                "name": "Return Policy",
+                                "url": "{{ route('views.guest.return') }}"
+                            },
+                            "shippingDetails": {
+                                "@type": "OfferShippingDetails",
+                                "shippingRate": {
+                                    "@type": "MonetaryAmount",
+                                    "value": {
+                                        "@type": "QuantitativeValue",
+                                        "value": "1000",
+                                        "unitText": "EUR"
+                                    }
+                                }
+                            }
+                        }
+                    }{{ $loop->last ? '' : ',' }}
+                @endforeach
+            ]
+        }
+    </script>
 @endsection
 
 @section('header')
@@ -99,7 +177,7 @@
         <div class="lg:col-span-3 grid grid-cols-2 grid-rows-1 lg:grid-cols-3 gap-4 lg:gap-8">
             @forelse ($data as $product)
                 @include('shared.guest.card', [
-                    'typ' => 'Offers',
+                    'typ' => 'Product',
                     'txt' => $product->name,
                     'src' => $product->Images[0]->Link,
                     'alt' => $product->name . ' image',

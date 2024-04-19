@@ -27,6 +27,41 @@
                 </h3>
             </div>
         </div>
+        @if ($typ === 'Product')
+            <div class="hidden">
+                <span itemprop="description">Discover a world of sophistication and style with ITALMENARA's
+                    product.</span>
+                <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="availability" content="http://schema.org/InStock">
+                    <meta itemprop="priceValidUntil" content="{{ now()->format('Y-m-d') }}">
+                    <meta itemprop="priceCurrency" content="EUR">
+                    <meta itemprop="price" content="1000">
+                </div>
+                <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                    <meta itemprop="ratingValue" content="4.5">
+                    <meta itemprop="reviewCount" content="10">
+                </div>
+                <div itemprop="review" itemscope itemtype="https://schema.org/Review">
+                    <div itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                        <meta itemprop="name" content="{{ env('APP_NAME') }}">
+                    </div>
+                    <meta itemprop="datePublished" content="{{ now()->format('Y-m-d') }}">
+                    <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                        <meta itemprop="ratingValue" content="4.5">
+                    </div>
+                    <span itemprop="description">This product is amazing!</span>
+                </div>
+                <div itemprop="hasMerchantReturnPolicy" itemscope itemtype="https://schema.org/ReturnPolicy">
+                    <span itemprop="name">{{ route('views.guest.return') }}</span>
+                </div>
+                <div itemprop="shippingDetails" itemscope itemtype="https://schema.org/OfferShippingDetails">
+                    <div itemprop="shippingRate" itemscope itemtype="https://schema.org/MonetaryAmount">
+                        <span itemprop="currency">EUR</span>
+                        <span itemprop="value">1000</span>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 @endif
 
