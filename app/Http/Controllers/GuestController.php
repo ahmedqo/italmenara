@@ -94,6 +94,7 @@ class GuestController extends Controller
     public function show($slug)
     {
         $data = Product::with('Brand')->with('Category')->with('Images')->where('slug', $slug)->first();
+        if (!$data) abort(404);
         Core::visitor($data->id);
         return view('guest.show', compact('data'));
     }

@@ -121,8 +121,9 @@
                             <a href="{{ route('actions.language.index', 'en') }}"
                                 aria-label="italmenara english language"
                                 class="w-full flex flex-wrap gap-2 px-2 py-1 text-x-black items-center outline-none !bg-opacity-10 hover:bg-x-black focus:bg-x-black focus-within:bg-x-black {{ Core::lang('en') ? '!bg-x-black' : '' }}">
-                                <img src="{{ asset('lang/en.png') }}?v={{ env('APP_VERSION') }}" loading="lazy"
-                                    class="block w-6 h-4 object-contain" width="1.5rem" height="1rem" />
+                                <img src="{{ asset('lang/en.png') }}?v={{ env('APP_VERSION') }}"
+                                    alt="english lang logo" loading="lazy" class="block w-6 h-4 object-contain"
+                                    width="1.5rem" height="1rem" />
                                 <span class="block flex-1 text-base text-start">{{ __('English') }}</span>
                             </a>
                         </li>
@@ -130,8 +131,9 @@
                             <a href="{{ route('actions.language.index', 'it') }}"
                                 aria-label="italmenara italian language"
                                 class="w-full flex flex-wrap gap-2 px-2 py-1 text-x-black items-center outline-none !bg-opacity-10 hover:bg-x-black focus:bg-x-black focus-within:bg-x-black {{ Core::lang('it') ? '!bg-x-black' : '' }}">
-                                <img src="{{ asset('lang/it.png') }}?v={{ env('APP_VERSION') }}" loading="lazy"
-                                    class="block w-6 h-4 object-contain" width="1.5rem" height="1rem" />
+                                <img src="{{ asset('lang/it.png') }}?v={{ env('APP_VERSION') }}"
+                                    alt="italian lang logo" loading="lazy" class="block w-6 h-4 object-contain"
+                                    width="1.5rem" height="1rem" />
                                 <span class="block flex-1 text-base text-start">{{ __('Italian') }}</span>
                             </a>
                         </li>
@@ -139,8 +141,9 @@
                             <a href="{{ route('actions.language.index', 'fr') }}"
                                 aria-label="italmenara french language"
                                 class="w-full flex flex-wrap gap-2 px-2 py-1 text-x-black items-center outline-none !bg-opacity-10 hover:bg-x-black focus:bg-x-black focus-within:bg-x-black {{ Core::lang('fr') ? '!bg-x-black' : '' }}">
-                                <img src="{{ asset('lang/fr.png') }}?v={{ env('APP_VERSION') }}" loading="lazy"
-                                    class="block w-6 h-4 object-contain" width="1.5rem" height="1rem" />
+                                <img src="{{ asset('lang/fr.png') }}?v={{ env('APP_VERSION') }}"
+                                    alt="french lang logo" loading="lazy" class="block w-6 h-4 object-contain"
+                                    width="1.5rem" height="1rem" />
                                 <span class="block flex-1 text-base text-start">{{ __('French') }}</span>
                             </a>
                         </li>
@@ -148,8 +151,9 @@
                             <a href="{{ route('actions.language.index', 'ar') }}"
                                 aria-label="italmenara arabic language"
                                 class="w-full flex flex-wrap gap-2 px-2 py-1 text-x-black items-center outline-none !bg-opacity-10 hover:bg-x-black focus:bg-x-black focus-within:bg-x-black {{ Core::lang('ar') ? '!bg-x-black' : '' }}">
-                                <img src="{{ asset('lang/ar.png') }}?v={{ env('APP_VERSION') }}" loading="lazy"
-                                    class="block w-6 h-4 object-contain" width="1.5rem" height="1rem" />
+                                <img src="{{ asset('lang/ar.png') }}?v={{ env('APP_VERSION') }}"
+                                    alt="arabic lang logo" loading="lazy" class="block w-6 h-4 object-contain"
+                                    width="1.5rem" height="1rem" />
                                 <span class="block flex-1 text-base text-start">{{ __('Arabic') }}</span>
                             </a>
                         </li>

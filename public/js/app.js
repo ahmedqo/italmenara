@@ -438,6 +438,8 @@ function toggle(trigger, target) {
 const Locale = document.documentElement.lang;
 
 OS.$Load(function() {
+    const overlay = document.querySelector("#overlay");
+    overlay && overlay.remove();
     document.body.removeAttribute("close");
 
     toggle("#trigger", "os-sidebar");
