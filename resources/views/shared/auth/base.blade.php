@@ -10,6 +10,16 @@
 </head>
 
 <body close>
+    <div id="overlay" class="fixed inset-0 w-full h-[100dvh] flex items-center justify-center bg-x-white z-[100]">
+        <div class="flex flex-col gap-4">
+            <img src="{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}" class="block w-48" />
+            <svg id="loader" stroke="currentColor" viewBox="0 0 24 24">
+                <g>
+                    <circle cx="12" cy="12" r="9.5" fill="none" stroke-width="3"></circle>
+                </g>
+            </svg>
+        </div>
+    </div>
     <os-wrapper class="bg-x-light isolate">
         <os-topbar transparent align="end" class="fixed top-0 left-0 right-0 w-full pointer-events-none z-[1]">
             <os-dropdown label="{{ __('Languages') }}" position="{{ Core::lang('ar') ? 'start' : 'end' }}"

@@ -99,7 +99,7 @@
         <div class="lg:col-span-3 grid grid-cols-2 grid-rows-1 lg:grid-cols-3 gap-4 lg:gap-8">
             @forelse ($data as $product)
                 @include('shared.guest.card', [
-                    'typ' => 'Product',
+                    'typ' => 'Offers',
                     'txt' => $product->name,
                     'src' => $product->Images[0]->Link,
                     'alt' => $product->name . ' image',

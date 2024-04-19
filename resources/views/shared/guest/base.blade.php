@@ -11,7 +11,7 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#2196f3">
     @yield('seo')
-    <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="canonical" href="{{ url()->full() }}">
     @include('shared.base.styles', ['public' => true])
     <title>@yield('title') | {{ env('APP_NAME') }}</title>
 </head>

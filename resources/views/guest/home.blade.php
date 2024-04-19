@@ -79,7 +79,7 @@
                     @foreach ($products as $product)
                         <li data-aos="slide-up" data-aos-delay="{{ $loop->index * 300 }}">
                             @include('shared.guest.card', [
-                                'typ' => 'Product',
+                                'typ' => 'Offers',
                                 'txt' => $product->name,
                                 'src' => $product->Images[0]->Link,
                                 'alt' => $product->name . ' image',
