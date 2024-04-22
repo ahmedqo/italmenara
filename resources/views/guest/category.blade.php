@@ -3,14 +3,14 @@
 
 @section('seo')
     <meta name="description"
-        content="Unveil ITALMENARA's varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.">
+        content="{{ Core::subString(__('Unveil ITALMENARA\'s varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.')) }}">
     <meta name="keywords"
         content="ITALMENARA, Italian craftsmanship, contemporary elegance, haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, online shopping">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ env('APP_NAME') }}">
     <meta property="og:title" content="ITALMENARA Categories Page">
     <meta property="og:description"
-        content="Unveil ITALMENARA's varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.">
+        content="{{ Core::subString(__('Unveil ITALMENARA\'s varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.')) }}">
     <meta property="og:image"
         content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ url()->full() }}">
@@ -19,7 +19,7 @@
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Categories Page">
         <meta name="twitter:description"
-            content="Unveil ITALMENARA's varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.">
+            content="{{ Core::subString(__('Unveil ITALMENARA\'s varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.')) }}">
         <meta name="twitter:image"
             content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif
@@ -29,7 +29,7 @@
             "@type": "ItemList",
             "name": "Product Categories at ITALMENARA",
             "url": "{{ url()->full() }}",
-            "description": "Unveil ITALMENARA's varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.",
+            "description": "{{ Core::subString(__('Unveil ITALMENARA\'s varied categories, merging Italian craftsmanship with contemporary elegance effortlessly. Explore haute couture fashion, exquisite accessories, luxury lifestyle, Italian design, curated collections, and more, meticulously crafted to redefine style and luxury online.')) }}",
             "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
@@ -52,7 +52,7 @@
                         "name": "{{ $category->name }}",
                         "url": "{{ route('views.guest.product', ['category' => $category->slug,]) }}",
                         "image": "{{ $category->Image->Link }}",
-                        "description": "{{ Core::subString($category->description ?? 'Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.') }}"
+                        "description": "{{ Core::subString($category->description ?? __('Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.')) }}"
                     }
                 }{{ $loop->last ? '' : ',' }}
                 @endforeach

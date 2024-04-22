@@ -3,14 +3,14 @@
 
 @section('seo')
     <meta name="description"
-        content="{{ Core::subString($principal->content ?? 'Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.') }}">
+        content="{{ Core::subString($principal->content ?? __('Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.')) }}">
     <meta name="keywords"
         content="ITALMENARA, Italian craftsmanship, contemporary style, luxury fashion, haute couture, refined accessories, curated collections, online shopping, men's fashion, women's fashion, designer wear, lifestyle, elegance, sophistication">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ env('APP_NAME') }}">
     <meta property="og:title" content="ITALMENARA Home Page">
     <meta property="og:description"
-        content="{{ Core::subString($principal->content ?? 'Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.') }}">
+        content="{{ Core::subString($principal->content ?? __('Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.')) }}">
     <meta property="og:image" content="{{ request()->getHost() }}{{ $principal->Images[0]->Link }}">
     <meta property="og:url" content="{{ url()->full() }}">
     @if (Core::getSetting('x'))
@@ -18,7 +18,7 @@
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Home Page">
         <meta name="twitter:description"
-            content="{{ Core::subString($principal->content ?? 'Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.') }}">
+            content="{{ Core::subString($principal->content ?? __('Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.')) }}">
         <meta name="twitter:image" content="{{ request()->getHost() }}{{ $principal->Images[0]->Link }}">
     @endif
     <script type="application/ld+json">
@@ -27,7 +27,7 @@
             "@type": "WebSite",
             "name": "{{ env('APP_NAME') }}",
             "url": "{{ request()->getHost() }}",
-            "description": "{{ Core::subString($principal->content ?? 'Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.') }}",
+            "description": "{{ Core::subString($principal->content ?? __('Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.')) }}",
             "potentialAction": {
                 "@type": "SearchAction",
                 "target": {

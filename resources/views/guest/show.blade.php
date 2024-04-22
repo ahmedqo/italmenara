@@ -3,7 +3,7 @@
 
 @section('seo')
     <meta name="description"
-        content="{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}">
+        content="{{ Core::subString($data->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}">
     <meta name="keywords"
         content="ITALMENARA, single product, luxury fashion, Italian craftsmanship, contemporary elegance, haute couture, refined accessories, designer wear, online shopping, men's fashion, women's fashion">
     <meta property="og:type" content="product">
@@ -14,7 +14,7 @@
     <meta property="product:category" content="{{ $data->Category->name }}" />
     <meta property="product:availability" content="in stock" />
     <meta property="og:description"
-        content="{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}">
+        content="{{ Core::subString($data->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}">
     <meta property="og:image" content="{{ request()->getHost() }}{{ $data->Images[0]->Link }}">
     <meta property="og:url" content="{{ request()->url() }}">
     @if (Core::getSetting('x'))
@@ -22,7 +22,7 @@
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="{{ $data->name . '|' . env('APP_NAME') }}">
         <meta name="twitter:description"
-            content="{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}">
+            content="{{ Core::subString($data->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}">
         <meta name="twitter:image" content="{{ request()->getHost() }}{{ $data->Images[0]->Link }}">
     @endif
     <script type="application/ld+json">
@@ -33,7 +33,7 @@
             "brand": "{{ $data->Brand->name }}",
             "category": "{{ $data->Category->name }}",
             "image": "{{ request()->getHost() }}{{ $data->Images[0]->Link }}",
-            "description": "{{ Core::subString($data->details ?? 'Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.') }}",
+            "description": "{{ Core::subString($data->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}",
             "offers": {
                 "@type": "Offer",
                 "availability": "http://schema.org/InStock",

@@ -3,14 +3,14 @@
 
 @section('seo')
     <meta name="description"
-        content="Discover Italmenara's privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.">
+        content="{{ Core::subString(__('Discover Italmenara\'s privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.')) }}">
     <meta name="keywords"
         content="privacy policy, ITALMENARA, data protection, personal information, confidentiality, privacy statement">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ env('APP_NAME') }}">
     <meta property="og:title" content="ITALMENARA Privacy Policy Page">
     <meta property="og:description"
-        content="Discover Italmenara's privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.">
+        content="{{ Core::subString(__('Discover Italmenara\'s privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.')) }}">
     <meta property="og:image"
         content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ url()->full() }}">
@@ -19,7 +19,7 @@
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Privacy Policy Page">
         <meta name="twitter:description"
-            content="Discover Italmenara's privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.">
+            content="{{ Core::subString(__('Discover Italmenara\'s privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.')) }}">
         <meta name="twitter:image"
             content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif
@@ -58,7 +58,7 @@
                 "@type": "WebPage",
                 "@id": "{{ route('views.guest.privacy') }}"
             },
-            "articleBody": "Discover Italmenara's privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality."
+            "articleBody": "{{ Core::subString(__('Discover Italmenara\'s privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.')) }}"
         }
     </script>
 @endsection

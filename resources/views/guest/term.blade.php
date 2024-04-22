@@ -3,14 +3,14 @@
 
 @section('seo')
     <meta name="description"
-        content="Review the terms and conditions governing your interaction with ITALMENARA. Ensure transparency and clarity regarding usage rights, privacy policies, refund procedures, and more, before engaging in any transactions or interactions on our platform.">
+        content="{{ Core::subString(__('Review the terms and conditions governing your interaction with ITALMENARA. Ensure transparency and clarity regarding usage rights, privacy policies, refund procedures, and more, before engaging in any transactions or interactions on our platform.')) }}">
     <meta name="keywords"
         content="Terms and conditions, ITALMENARA, usage rights, privacy policies, refund procedures, terms of service, online transactions">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ env('APP_NAME') }}">
     <meta property="og:title" content="ITALMENARA Terms And Conditions Page">
     <meta property="og:description"
-        content="Review the terms and conditions governing your interaction with ITALMENARA. Ensure transparency and clarity regarding usage rights, privacy policies, refund procedures, and more, before engaging in any transactions or interactions on our platform.">
+        content="{{ Core::subString(__('Review the terms and conditions governing your interaction with ITALMENARA. Ensure transparency and clarity regarding usage rights, privacy policies, refund procedures, and more, before engaging in any transactions or interactions on our platform.')) }}">
     <meta property="og:image"
         content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ url()->full() }}">
@@ -19,7 +19,7 @@
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Terms And Conditions Page">
         <meta name="twitter:description"
-            content="Review the terms and conditions governing your interaction with ITALMENARA. Ensure transparency and clarity regarding usage rights, privacy policies, refund procedures, and more, before engaging in any transactions or interactions on our platform.">
+            content="{{ Core::subString(__('Review the terms and conditions governing your interaction with ITALMENARA. Ensure transparency and clarity regarding usage rights, privacy policies, refund procedures, and more, before engaging in any transactions or interactions on our platform.')) }}">
         <meta name="twitter:image"
             content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif
@@ -58,7 +58,7 @@
                 "@type": "WebPage",
                 "@id": "{{ route('views.guest.term') }}"
             },
-            "articleBody": "Review the terms and conditions governing your interaction with ITALMENARA. Ensure transparency and clarity regarding usage rights, privacy policies, refund procedures, and more, before engaging in any transactions or interactions on our platform."
+            "articleBody": "{{ Core::subString(__('Review the terms and conditions governing your interaction with ITALMENARA. Ensure transparency and clarity regarding usage rights, privacy policies, refund procedures, and more, before engaging in any transactions or interactions on our platform.')) }}"
         }
     </script>
 @endsection

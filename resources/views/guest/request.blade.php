@@ -3,14 +3,14 @@
 
 @section('seo')
     <meta name="description"
-        content="{{ Core::subString($seo ?? 'Discover the ITALMENARA Request Collection, where Italian craftsmanship converges with contemporary style online. Explore meticulously crafted pieces that redefine luxury, spanning fashion-forward apparel to refined accessories, all available for exploration and purchase.') }}">
+        content="{{ Core::subString(__('Discover the ITALMENARA Request Collection, where Italian craftsmanship converges with contemporary style online. Explore meticulously crafted pieces that redefine luxury, spanning fashion-forward apparel to refined accessories, all available for exploration and purchase.')) }}">
     <meta name="keywords"
         content="ITALMENARA, Request Collection, Italian craftsmanship, contemporary style, luxury fashion, fashion-forward apparel, refined accessories, online shopping, curated collections">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ env('APP_NAME') }}">
     <meta property="og:title" content="ITALMENARA Request Page">
     <meta property="og:description"
-        content="Discover the ITALMENARA Request Collection, where Italian craftsmanship converges with contemporary style online. Explore meticulously crafted pieces that redefine luxury, spanning fashion-forward apparel to refined accessories, all available for exploration and purchase.">
+        content="{{ Core::subString(__('Discover the ITALMENARA Request Collection, where Italian craftsmanship converges with contemporary style online. Explore meticulously crafted pieces that redefine luxury, spanning fashion-forward apparel to refined accessories, all available for exploration and purchase.')) }}">
     <meta property="og:image"
         content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ url()->full() }}">
@@ -19,7 +19,7 @@
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Request Page">
         <meta name="twitter:description"
-            content="Discover the ITALMENARA Request Collection, where Italian craftsmanship converges with contemporary style online. Explore meticulously crafted pieces that redefine luxury, spanning fashion-forward apparel to refined accessories, all available for exploration and purchase.">
+            content="{{ Core::subString(__('Discover the ITALMENARA Request Collection, where Italian craftsmanship converges with contemporary style online. Explore meticulously crafted pieces that redefine luxury, spanning fashion-forward apparel to refined accessories, all available for exploration and purchase.')) }}">
         <meta name="twitter:image"
             content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif

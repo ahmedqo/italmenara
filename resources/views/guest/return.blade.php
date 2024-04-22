@@ -3,14 +3,14 @@
 
 @section('seo')
     <meta name="description"
-        content="Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.">
+        content="{{ Core::subString(__('Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.')) }}">
     <meta name="keywords"
         content="Return policy, ITALMENARA, product returns, return procedures, eligibility criteria, customer satisfaction, online shopping">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ env('APP_NAME') }}">
     <meta property="og:title" content="ITALMENARA Return Policy Page">
     <meta property="og:description"
-        content="Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.">
+        content="{{ Core::subString(__('Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.')) }}">
     <meta property="og:image"
         content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     <meta property="og:url" content="{{ url()->full() }}">
@@ -19,7 +19,7 @@
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Return Policy Page">
         <meta name="twitter:description"
-            content="Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.">
+            content="{{ Core::subString(__('Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.')) }}">
         <meta name="twitter:image"
             content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif
@@ -58,7 +58,7 @@
                 "@type": "WebPage",
                 "@id": "{{ route('views.guest.return') }}"
             },
-            "articleBody": "Familiarize yourself with ITALMENARA's return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction."
+            "articleBody": "{{ Core::subString(__('Familiarize yourself with ITALMENARA\'s return policy, ensuring clarity on procedures, timelines, and eligibility criteria. Trust in our commitment to providing a hassle-free experience for returning products, aligning with our dedication to customer satisfaction.')) }}"
         }
     </script>
 @endsection
