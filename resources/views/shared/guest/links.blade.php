@@ -2,7 +2,7 @@
     @if ($hide != 1)
         <li>
             <div class="p-4 rounded-x-huge bg-x-white flex flex-col gap-1">
-                <a href="{{ route('views.guest.term') }}"
+                <a href="{{ route('views.guest.term') }}" aria-label="{{ env('APP_NAME') }} terms and conditions"
                     class="font-x-thin text-x-black text-base outline-none underline-offset-4 hover:underline focus:underline">
                     {{ __('Terms And Conditions') }}
                 </a>
@@ -15,7 +15,7 @@
     @if ($hide != 2)
         <li>
             <div class="p-4 rounded-x-huge bg-x-white flex flex-col gap-1">
-                <a href="{{ route('views.guest.privacy') }}"
+                <a href="{{ route('views.guest.privacy') }}" aria-label="{{ env('APP_NAME') }} privacy policy"
                     class="font-x-thin text-x-black text-base outline-none underline-offset-4 hover:underline focus:underline">
                     {{ __('Privacy Policy') }}
                 </a>
@@ -28,7 +28,7 @@
     @if ($hide != 3)
         <li>
             <div class="p-4 rounded-x-huge bg-x-white flex flex-col gap-1">
-                <a href="{{ route('views.guest.return') }}"
+                <a href="{{ route('views.guest.return') }}" aria-label="{{ env('APP_NAME') }} return policy"
                     class="font-x-thin text-x-black text-base outline-none underline-offset-4 hover:underline focus:underline">
                     {{ __('Return Policy') }}
                 </a>
@@ -41,7 +41,7 @@
     @if ($hide != 4)
         <li>
             <div class="p-4 rounded-x-huge bg-x-white flex flex-col gap-1">
-                <a href="{{ route('views.guest.faq') }}"
+                <a href="{{ route('views.guest.faq') }}" aria-label="{{ env('APP_NAME') }} faqs"
                     class="font-x-thin text-x-black text-base outline-none underline-offset-4 hover:underline focus:underline">
                     {{ __('FAQs') }}
                 </a>

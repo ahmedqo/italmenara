@@ -92,7 +92,7 @@ class Product extends Model implements Sitemapable
 
     public function toSitemapTag(): Url | string | array
     {
-        return Url::create(route('views.guest.show', $this->slug))
+        return Url::create(Core::secure(route('views.guest.show', $this->slug)))
             ->setLastModificationDate(Carbon::create($this->updated_at))
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
             ->setPriority(0.1);

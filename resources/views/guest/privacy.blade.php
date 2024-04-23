@@ -11,17 +11,15 @@
     <meta property="og:title" content="ITALMENARA Privacy Policy Page">
     <meta property="og:description"
         content="{{ Core::subString(__('Discover Italmenara\'s privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.')) }}">
-    <meta property="og:image"
-        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
-    <meta property="og:url" content="{{ url()->full() }}">
+    <meta property="og:image" content="{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:url" content="{{ Core::secure(url()->full()) }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Privacy Policy Page">
         <meta name="twitter:description"
             content="{{ Core::subString(__('Discover Italmenara\'s privacy policy outlining how we protect your personal information. Learn about our commitment to safeguarding your data and ensuring confidentiality.')) }}">
-        <meta name="twitter:image"
-            content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+        <meta name="twitter:image" content="{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif
     <script type="application/ld+json">
         {

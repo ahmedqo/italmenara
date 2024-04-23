@@ -1,5 +1,6 @@
 <?php
 
+use App\Functions\Core;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -24,16 +25,16 @@ Artisan::command('inspire', function () {
 
 Artisan::command('sitemap:generate', function () {
     $sitemap = Sitemap::create()
-        ->add(route('views.guest.home'))
-        ->add(route('views.guest.brand'))
-        ->add(route('views.guest.product'))
-        ->add(route('views.guest.category'))
-        ->add(route('views.guest.faq'))
-        ->add(route('views.guest.return'))
-        ->add(route('views.guest.term'))
-        ->add(route('views.guest.privacy'))
+        ->add(Core::secure(route('views.guest.home')))
+        ->add(Core::secure(route('views.guest.brand')))
+        ->add(Core::secure(route('views.guest.category')))
+        ->add(Core::secure(route('views.guest.product')))
         ->add(Brand::all())
         ->add(Category::all())
         ->add(Product::all())
+        ->add(Core::secure(route('views.guest.faq')))
+        ->add(Core::secure(route('views.guest.return')))
+        ->add(Core::secure(route('views.guest.term')))
+        ->add(Core::secure(route('views.guest.privacy')))
         ->writeToFile(public_path('sitemap.xml'));
 })->purpose('generate site map');

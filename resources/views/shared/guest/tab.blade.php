@@ -2,7 +2,6 @@
     <button
         class="flex flex-wrap items-start w-full gap-2 outline-none underline-offset-4 hover:underline focus:underline">
         <svg class="pointer-events-none w-6 h-6 text-x-prime block" fill="currentColor" viewBox="0 96 960 960">
-            <title>arrow icon</title>
             @if (Core::lang('ar'))
                 <path
                     d="M528 805 331 607q-7-6-10.5-14t-3.5-18q0-9 3.5-17.5T331 543l198-199q13-12 32-12t33 12q13 13 12.5 33T593 410L428 575l166 166q13 13 13 32t-13 32q-14 13-33.5 13T528 805Z" />

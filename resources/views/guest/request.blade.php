@@ -11,17 +11,15 @@
     <meta property="og:title" content="ITALMENARA Request Page">
     <meta property="og:description"
         content="{{ Core::subString(__('Discover the ITALMENARA Request Collection, where Italian craftsmanship converges with contemporary style online. Explore meticulously crafted pieces that redefine luxury, spanning fashion-forward apparel to refined accessories, all available for exploration and purchase.')) }}">
-    <meta property="og:image"
-        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
-    <meta property="og:url" content="{{ url()->full() }}">
+    <meta property="og:image" content="{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:url" content="{{ Core::secure(url()->full()) }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Request Page">
         <meta name="twitter:description"
             content="{{ Core::subString(__('Discover the ITALMENARA Request Collection, where Italian craftsmanship converges with contemporary style online. Explore meticulously crafted pieces that redefine luxury, spanning fashion-forward apparel to refined accessories, all available for exploration and purchase.')) }}">
-        <meta name="twitter:image"
-            content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+        <meta name="twitter:image" content="{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif
 @endsection
 
@@ -46,7 +44,6 @@
             <ul id="items" class="flex flex-col gap-4 lg:col-span-3">
                 <li class="my-10">
                     <svg id="loader" stroke="currentColor" viewBox="0 0 24 24">
-                        <title>loading icon</title>
                         <g>
                             <circle cx="12" cy="12" r="9.5" fill="none" stroke-width="3"></circle>
                         </g>

@@ -6,7 +6,7 @@
     </div>
     <div id="content">
         <h3>
-            {{ request()->getHost() }}
+            {{ Core::secure(request()->getHost()) }}
         </h3>
         @if (Core::getSetting('print_email'))
             <h3>

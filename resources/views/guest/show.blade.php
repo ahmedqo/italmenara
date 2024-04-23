@@ -15,15 +15,15 @@
     <meta property="product:availability" content="in stock" />
     <meta property="og:description"
         content="{{ Core::subString($data->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}">
-    <meta property="og:image" content="{{ request()->getHost() }}{{ $data->Images[0]->Link }}">
-    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:image" content="{{ $data->Images[0]->Link }}">
+    <meta property="og:url" content="{{ Core::secure(url()->full()) }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="{{ $data->name . '|' . env('APP_NAME') }}">
         <meta name="twitter:description"
             content="{{ Core::subString($data->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}">
-        <meta name="twitter:image" content="{{ request()->getHost() }}{{ $data->Images[0]->Link }}">
+        <meta name="twitter:image" content="{{ $data->Images[0]->Link }}">
     @endif
     <script type="application/ld+json">
         {
@@ -32,12 +32,12 @@
             "name": "{{ $data->name }}",
             "brand": "{{ $data->Brand->name }}",
             "category": "{{ $data->Category->name }}",
-            "image": "{{ request()->getHost() }}{{ $data->Images[0]->Link }}",
+            "image": "{{ $data->Images[0]->Link }}",
             "description": "{{ Core::subString($data->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}",
             "offers": {
                 "@type": "Offer",
                 "availability": "http://schema.org/InStock",
-                "url": "{{ url()->full() }}",
+                "url": "{{ Core::secure(url()->full()) }}",
                 "priceValidUntil": "{{ now()->format('Y-m-d') }}",
                 "priceCurrency": "EUR",
                 "price": "{{ $data->price }}"
@@ -115,7 +115,8 @@
                     <ul class="w-full h-full">
                         @foreach ($data->Images as $image)
                             <li class="w-full h-full flex items-center justify-center">
-                                <img src="{{ $image->Link }}" alt="{{ $data->name }} image {{ $loop->index + 1 }}"
+                                <img src="{{ $image->Link }}"
+                                    alt="{{ env('APP_NAME') }} {{ $data->name }} product image {{ $loop->index + 1 }}"
                                     width="100%" height="100%"
                                     class="block w-full h-full object-contain object-center" />
                             </li>
@@ -127,7 +128,6 @@
                     <button id="prev" name="prev-button"
                         class="shadow-x-core pointer-events-auto flex rounded-full w-8 h-8 items-center justify-center bg-x-prime text-x-white hover:text-x-black focus:text-x-black hover:bg-x-acent focus:bg-x-acent outline-none">
                         <svg class="pointer-events-none w-6 h-6" fill="currentColor" viewBox="0 96 960 960">
-                            <title>prev arrow icon</title>
                             <path
                                 d="M528 805 331 607q-7-6-10.5-14t-3.5-18q0-9 3.5-17.5T331 543l198-199q13-12 32-12t33 12q13 13 12.5 33T593 410L428 575l166 166q13 13 13 32t-13 32q-14 13-33.5 13T528 805Z" />
                         </svg>
@@ -135,7 +135,6 @@
                     <button id="next" name="next-button"
                         class="shadow-x-core pointer-events-auto flex rounded-full w-8 h-8 items-center justify-center bg-x-prime text-x-white hover:text-x-black focus:text-x-black hover:bg-x-acent focus:bg-x-acent outline-none">
                         <svg class="pointer-events-none w-6 h-6" fill="currentColor" viewBox="0 96 960 960">
-                            <title>next arrow icon</title>
                             <path
                                 d="M344 805q-14-15-14-33.5t14-31.5l164-165-165-166q-14-12-13.5-32t14.5-33q13-14 31.5-13.5T407 344l199 199q6 6 10 14.5t4 17.5q0 10-4 18t-10 14L408 805q-13 13-32 12.5T344 805Z" />
                         </svg>
@@ -170,8 +169,9 @@
                         href="{{ route('views.guest.product', [
                             'category' => $data->Category->slug,
                         ]) }}">
-                        <img src="{{ $data->Category->Image->Link }}" alt="{{ $data->Category->name }} image"
-                            width="6rem" height="auto"
+                        <img src="{{ $data->Category->Image->Link }}"
+                            alt="{{ env('APP_NAME') }} {{ $data->Category->name }} category image" width="6rem"
+                            height="auto"
                             class="block w-24 aspect-video object-cover bg-x-white object-center rounded-x-thin overflow-hidden" />
                     </a>
                 </div>
@@ -183,8 +183,8 @@
                         href="{{ route('views.guest.product', [
                             'brand' => $data->Brand->slug,
                         ]) }}">
-                        <img src="{{ $data->Brand->Image->Link }}" alt="{{ $data->Brand->name }} image" width="6rem"
-                            height="auto"
+                        <img src="{{ $data->Brand->Image->Link }}"
+                            alt="{{ env('APP_NAME') }} {{ $data->Brand->name }} brand image" width="6rem" height="auto"
                             class="block w-24 aspect-video object-contain bg-x-white object-center rounded-x-thin overflow-hidden" />
                     </a>
                 </div>

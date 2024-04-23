@@ -59,7 +59,7 @@ class Category extends Model implements Sitemapable
 
     public function toSitemapTag(): Url | string | array
     {
-        return Url::create(route('views.guest.product', ['category' => $this->slug]))
+        return Url::create(Core::secure(route('views.guest.product', ['category' => $this->slug])))
             ->setLastModificationDate(Carbon::create($this->updated_at))
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
             ->setPriority(0.1);

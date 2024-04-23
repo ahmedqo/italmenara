@@ -9,6 +9,23 @@ use Illuminate\Support\Str;
 
 class Core
 {
+    public static function secure($url)
+    {
+        $parsedUrl = parse_url($url);
+
+        $scheme = isset($parsedUrl['scheme']) ? $parsedUrl['scheme'] . '://' : 'https://';
+        $hostname = isset($parsedUrl['host']) ? $parsedUrl['host'] : '';
+
+        if (strpos($hostname, 'www.') !== 0) {
+            $hostname = 'www.' . $hostname;
+        }
+
+        $path = isset($parsedUrl['path']) ? $parsedUrl['path'] : '';
+        $query = isset($parsedUrl['query']) ? '?' . $parsedUrl['query'] : '';
+
+        return $scheme . $hostname . $path . $query;
+    }
+
     public static function lang($lang = null)
     {
         return $lang ? app()->getLocale() == $lang : app()->getLocale();

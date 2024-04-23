@@ -11,24 +11,22 @@
     <meta property="og:title" content="ITALMENARA Brands Page">
     <meta property="og:description"
         content="{{ Core::subString(__('Discover ITALMENARA Brands Collection, the epitome of Italian craftsmanship fused with contemporary style. Browse through meticulously crafted pieces that redefine luxury, encompassing fashion-forward apparel and refined accessories, all available online.')) }}">
-    <meta property="og:image"
-        content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
-    <meta property="og:url" content="{{ url()->full() }}">
+    <meta property="og:image" content="{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+    <meta property="og:url" content="{{ Core::secure(url()->full()) }}">
     @if (Core::getSetting('x'))
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="{{ Core::getSetting('x') }}">
         <meta name="twitter:title" content="ITALMENARA Brands Page">
         <meta name="twitter:description"
             content="{{ Core::subString(__('Discover ITALMENARA Brands Collection, the epitome of Italian craftsmanship fused with contemporary style. Browse through meticulously crafted pieces that redefine luxury, encompassing fashion-forward apparel and refined accessories, all available online.')) }}">
-        <meta name="twitter:image"
-            content="{{ request()->getHost() }}{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
+        <meta name="twitter:image" content="{{ asset('img/svg/logo.svg') }}?v={{ env('APP_VERSION') }}">
     @endif
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
             "@type": "ItemList",
             "name": "Product Brands at ITALMENARA",
-            "url": "{{ url()->full() }}",
+            "url": "{{ Core::secure(url()->full()) }}",
             "description": "{{ Core::subString(__('Discover ITALMENARA Brands Collection, the epitome of Italian craftsmanship fused with contemporary style. Browse through meticulously crafted pieces that redefine luxury, encompassing fashion-forward apparel and refined accessories, all available online.')) }}",
             "potentialAction": {
                 "@type": "SearchAction",

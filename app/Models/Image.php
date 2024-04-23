@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Storage;
+use App\Functions\Core;
 
 class Image extends Model
 {
@@ -43,7 +44,7 @@ class Image extends Model
 
     public function getLinkAttribute()
     {
-        return Storage::url(implode('/', [Image::$STORAGE, $this->storage]));
+        return Core::secure(url(Storage::url(implode('/', [Image::$STORAGE, $this->storage]))));
     }
 
     public function Target(): MorphTo

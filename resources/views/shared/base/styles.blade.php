@@ -1,4 +1,4 @@
-<link rel="preconnect" href="{{ request()->getHost() }}" />
+<link rel="preconnect" href="{{ Core::secure(request()->getHost()) }}" />
 <link rel="preload" href="{{ asset('css/index.min.css') }}?v={{ env('APP_VERSION') }}" as="style" />
 <link rel="preload" href="{{ asset('css/app.min.css') }}?v={{ env('APP_VERSION') }}" as="style" />
 <link rel="preload" href="{{ asset('js/os.min.js') }}?v={{ env('APP_VERSION') }}" as="script" />
