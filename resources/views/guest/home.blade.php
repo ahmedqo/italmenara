@@ -265,11 +265,10 @@
             <iframe title="italmenara-address-map"
                 class="w-[150%] h-[150%] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                 src="https://www.google.com/maps/embed/v1/place?q={{ env('MAP_ADDRESS_LINK') }}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
-                loading="lazy"></iframe>
+                loading="lazy" defer></iframe>
         </div>
     </section>
 @endsection
-
 
 @section('scripts')
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -278,6 +277,8 @@
             once: true,
             offset: 0,
         });
+    </script>
+    <script defer>
         HomeInitializer({
             ImageCount: {{ $principal->Images->count() }},
             ProductCount: {{ $products->count() }},

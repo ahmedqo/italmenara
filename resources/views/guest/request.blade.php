@@ -66,7 +66,7 @@
 @endsection
 
 @section('scripts')
-    <script>
+    <script defer>
         RequestInitializer({
             Search: "{{ route('views.guest.search') }}",
             Target: document.querySelector("#items"),

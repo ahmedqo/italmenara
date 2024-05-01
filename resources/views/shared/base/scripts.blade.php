@@ -1,6 +1,6 @@
-<script src="{{ asset('js/os.min.js') }}?v={{ env('APP_VERSION') }}"></script>
+<script src="{{ asset('js/os.min.js') }}?v={{ env('APP_VERSION') }}" {{ isset($public) ? 'defer' : '' }}></script>
 @if (isset($public))
-    <script src="{{ asset('js/app.min.js') }}?v={{ env('APP_VERSION') }}"></script>
+    <script src="{{ asset('js/app.min.js') }}?v={{ env('APP_VERSION') }}" defer></script>
 @else
     <script src="{{ asset('js/index.min.js') }}?v={{ env('APP_VERSION') }}"></script>
 @endif

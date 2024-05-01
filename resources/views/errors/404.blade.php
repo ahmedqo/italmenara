@@ -7,7 +7,7 @@
             <img src="{{ asset('img/svg/404.svg') }}?v={{ env('APP_VERSION') }}" alt="ItalMenara not found image"
                 loading="lazy" width="100%" height="auto"
                 class="block w-8/12 sm:w-7/12 lg:w-1/3 mx-auto pointer-events-none">
-            <h1 class="uppercase font-x-huge text-x-black text-3xl lg:text-4xl">
+            <h1 class="uppercase font-x-huge text-x-black text-3xl lg:text-4xl text-center">
                 {{ ucwords(__('Page Not Found')) }}
             </h1>
         </div>

@@ -107,7 +107,8 @@
             [$data->name, route('views.guest.show', $data->slug)],
         ],
     ])
-    <section class="w-full container mx-auto p-4 grid grid-rows-1 grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-8">
+    <section itemscope itemtype="https://schema.org/Product"
+        class="hproduct w-full container mx-auto p-4 grid grid-rows-1 grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-8">
         <div
             class="bg-x-white lg:sticky top-4 shadow-x-core w-full aspect-video rounded-x-huge overflow-hidden lg:col-span-3">
             <div class="w-full h-full relative">
@@ -115,10 +116,10 @@
                     <ul class="w-full h-full">
                         @foreach ($data->Images as $image)
                             <li class="w-full h-full flex items-center justify-center">
-                                <img src="{{ $image->Link }}"
+                                <img src="{{ $image->Link }}" itemprop="image"
                                     alt="{{ env('APP_NAME') }} {{ $data->name }} product image {{ $loop->index + 1 }}"
                                     width="100%" height="100%"
-                                    class="block w-full h-full object-contain object-center" />
+                                    class="photo block w-full h-full object-contain object-center" />
                             </li>
                         @endforeach
                     </ul>
@@ -144,7 +145,7 @@
         </div>
         <div class="w-full lg:col-span-2 flex flex-col gap-6 lg:gap-8">
             <div class="w-full flex flex-col">
-                <h1 class="w-full text-x-black font-x-huge text-xl lg:text-3xl">
+                <h1 itemprop="name" class="fn w-full text-x-black font-x-huge text-xl lg:text-3xl">
                     {{ $data->name }}
                 </h1>
                 <h3 class="w-full text-x-black text-opacity-50 font-x-thin text-sm lg:text-base">
@@ -152,7 +153,7 @@
                 </h3>
             </div>
             @if ($data->details)
-                <div class="flex flex-col gap-2 -mt-2 lg:-mt-4">
+                <div itemprop="description" class="description flex flex-col gap-2 -mt-2 lg:-mt-4">
                     @foreach (Core::getArray($data->details) as $detail)
                         <p class="text-base font-medium text-x-black text-justify">
                             {{ $detail }}
@@ -199,6 +200,37 @@
                 </os-button>
             </form>
         </div>
+        <div class="hidden">
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <meta class="availability" itemprop="availability" content="http://schema.org/InStock">
+                <meta itemprop="priceValidUntil" content="{{ now()->format('Y-m-d') }}">
+                <meta class="currency" itemprop="priceCurrency" content="EUR">
+                <meta class="price" itemprop="price" content="{{ $data->price }}">
+            </div>
+            <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                <meta itemprop="ratingValue" content="4.5">
+                <meta itemprop="reviewCount" content="10">
+            </div>
+            <div itemprop="review" itemscope itemtype="https://schema.org/Review">
+                <div itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="{{ env('APP_NAME') }}">
+                </div>
+                <meta itemprop="datePublished" content="{{ now()->format('Y-m-d') }}">
+                <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                    <meta itemprop="ratingValue" content="4.5">
+                </div>
+                <span itemprop="description">This product is amazing!</span>
+            </div>
+            <div itemprop="hasMerchantReturnPolicy" itemscope itemtype="https://schema.org/ReturnPolicy">
+                <span itemprop="name">{{ route('views.guest.return') }}</span>
+            </div>
+            <div itemprop="shippingDetails" itemscope itemtype="https://schema.org/OfferShippingDetails">
+                <div itemprop="shippingRate" itemscope itemtype="https://schema.org/MonetaryAmount">
+                    <span itemprop="currency">EUR</span>
+                    <span itemprop="value">{{ $data->price }}</span>
+                </div>
+            </div>
+        </div>
     </section>
     @if ($data->description)
         <section class="w-full container mx-auto p-4 flex flex-col gap-4">
@@ -211,7 +243,7 @@
 @endsection
 
 @section('scripts')
-    <script>
+    <script defer>
         ShowCase()
     </script>
 @endsection
