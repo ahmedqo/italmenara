@@ -38,6 +38,24 @@
                     "valueName": "search_term_string"
                 }
             },
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem", 
+                    "position": 1, 
+                    "item": {
+                        "@id": "{{ route('views.guest.home') }}",
+                        "name": "{{ __('Home') }}"
+                    }
+                }, {
+                    "@type": "ListItem", 
+                    "position": 2, 
+                    "item": {
+                        "@id": "{{ route('views.guest.privacy') }}",
+                        "name": "{{ __('Privacy Policy') }}"
+                    }
+                }]
+            },
             "author": {
                 "@type": "Organization",
                 "name": "{{ env('APP_NAME') }}"

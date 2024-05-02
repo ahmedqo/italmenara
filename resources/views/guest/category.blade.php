@@ -40,21 +40,37 @@
                     "valueName": "search_term_string"
                 }
             },
-            "itemListElement": [
-                @foreach ($data as $category)
-                {
-                    "@type": "ListItem",
-                    "position": {{ $loop->index + 1 }},
+            "itemListElement": {!! $data->map(function($category, $index){
+                return [
+                    "@type" => "ListItem",
+                    "position" => $index + 1,
+                    "item" => [
+                        "@type" => "ListItem",
+                        "name" => $category->name,
+                        "url" => route('views.guest.product', ['category' => $category->slug]),
+                        "image" => $category->Image->Link,
+                        "description" => Core::subString($category->description ?? __('Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.'))
+                    ]
+                ];
+            }) !!},
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem", 
+                    "position": 1, 
                     "item": {
-                        "@type": "ListItem",
-                        "name": "{{ $category->name }}",
-                        "url": "{{ route('views.guest.product', ['category' => $category->slug,]) }}",
-                        "image": "{{ $category->Image->Link }}",
-                        "description": "{{ Core::subString($category->description ?? __('Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.')) }}"
+                        "@id": "{{ route('views.guest.home') }}",
+                        "name": "{{ __('Home') }}"
                     }
-                }{{ $loop->last ? '' : ',' }}
-                @endforeach
-            ]
+                }, {
+                    "@type": "ListItem", 
+                    "position": 2, 
+                    "item": {
+                        "@id": "{{ route('views.guest.category') }}",
+                        "name": "{{ __('Categories') }}"
+                    }
+                }]
+            }
         }
     </script>
 @endsection

@@ -26,7 +26,9 @@
             "@context": "http://schema.org",
             "@type": "WebSite",
             "name": "{{ env('APP_NAME') }}",
+            "alternateName": ["Italmenara", "ital menara", "italmenara.com"],
             "url": "{{ Core::secure(url()->full()) }}",
+            "logo": "{{ asset('img/svg/logo.svg') }}",
             "description": "{{ Core::subString($principal->content ?? __('Explore luxury fashion and accessories at ITALMENARA. Discover exquisite designer wear embodying Italian craftsmanship and contemporary elegance.')) }}",
             "potentialAction": {
                 "@type": "SearchAction",

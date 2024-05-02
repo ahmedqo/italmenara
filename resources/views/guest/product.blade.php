@@ -40,62 +40,95 @@
                     "valueName": "search_term_string"
                 }
             },
-            "itemListElement": [
-                @foreach ($data as $product)
-                    {
-                        "@type": "ListItem",
-                        "position": {{ $loop->index + 1 }},
-                        "item": {
-                            "@type": "Product",
-                            "name": "{{ $product->name }}",
-                            "url": "{{ route('views.guest.show', $product->slug) }}",
-                            "image": "{{ $product->Images[0]->Link }}",
-                            "description": "{{ Core::subString($product->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}",
-                            "offers": {
-                                "@type": "Offer",
-                                "availability": "http://schema.org/InStock",
-                                "priceValidUntil": "{{ now()->format('Y-m-d') }}",
-                                "priceCurrency": "EUR",
-                                "price": "{{ $product->price }}"
-                            },
-                            "aggregateRating": {
-                                "@type": "AggregateRating",
-                                "ratingValue": "4.5",
-                                "reviewCount": "10"
-                            },
-                            "review": {
-                                "@type": "Review",
-                                "author": {
-                                    "@type": "Organization",
-                                    "name": "{{ env('APP_NAME') }}"
-                                },
-                                "datePublished": "{{ now()->format('Y-m-d') }}",
-                                "reviewRating": {
-                                    "@type": "Rating",
-                                    "ratingValue": "4.5"
-                                },
-                                "description": "This product is amazing!"
-                            },
-                            "hasMerchantReturnPolicy": {
-                                "@type": "MerchantReturnPolicy",
-                                "name": "Return Policy",
-                                "url": "{{ route('views.guest.return') }}"
-                            },
-                            "shippingDetails": {
-                                "@type": "OfferShippingDetails",
-                                "shippingRate": {
-                                    "@type": "MonetaryAmount",
-                                    "value": {
-                                        "@type": "QuantitativeValue",
-                                        "value": "1000",
-                                        "unitText": "EUR"
-                                    }
-                                }
-                            }
-                        }
-                    }{{ $loop->last ? '' : ',' }}
-                @endforeach
-            ]
+            "itemListElement": {!! $data->map(function($product, $index){
+                return [
+                    "@type" => "ListItem",
+                    "position" => $index + 1,
+                    "item" => [
+                        "@type" => "Product",
+                        "name" => $product->name,
+                        "url" => route('views.guest.show', $product->slug),
+                        "description" => Core::subString($product->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')),
+                        "image" => [
+                            "@type" => "ImageObject",
+                            "name" => $product->name,
+                            "contentUrl" => $product->Images->map(function($image){ return $image->Link; }),
+                            "thumbnailUrl" => $product->Images->map(function($image){ return $image->Link; })
+                        ],
+                        "offers" => [
+                            "@type" => "AggregateOffer",
+                            "availability" => "http://schema.org/InStock",
+                            "url" => route('views.guest.show', $product->slug),
+                            "priceValidUntil" => now()->format('Y-m-d'),
+                            "priceCurrency" => "EUR",
+                            "price" => $product->price,
+                            "hasMerchantReturnPolicy" => [
+                                "@type" => "MerchantReturnPolicy",
+                                "name" => "Return Policy",
+                                "url" => route('views.guest.return')
+                            ],
+                            "shippingDetails" => [
+                                "@type" => "OfferShippingDetails",
+                                "shippingRate" => [
+                                    "@type" => "MonetaryAmount",
+                                    "value" => [
+                                        "@type" => "QuantitativeValue",
+                                        "value" => "1000",
+                                        "unitText" => "EUR"
+                                    ]
+                                ]
+                            ]
+                        ],
+                        "aggregateRating" => [
+                            "@type" => "AggregateRating",
+                            "ratingValue" => "4.5",
+                            "reviewCount" => "10"
+                        ],
+                        "review" => [
+                            "@type" => "Review",
+                            "author" => [
+                                "@type" => "Organization",
+                                "name" => env('APP_NAME')
+                            ],
+                            "datePublished" => now()->format('Y-m-d'),
+                            "reviewRating" => [
+                                "@type" => "Rating",
+                                "ratingValue" => "4.5"
+                            ],
+                            "description" => "This product is amazing!"
+                        ],
+                        "hasMerchantReturnPolicy" => [
+                            "@type" => "MerchantReturnPolicy",
+                            "name" => "Return Policy",
+                            "url" => route('views.guest.return')
+                        ],
+                        "shippingDetails" => [
+                            "@type" => "OfferShippingDetails",
+                            "shippingRate" => [
+                                "@type" => "MonetaryAmount",
+                                "value" => [
+                                    "@type" => "QuantitativeValue",
+                                    "value" => "1000",
+                                    "unitText" => "EUR"
+                                ]
+                            ]
+                        ]
+                    ]
+                ];
+            }) !!},
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": {!! collect($items ?? [])->map(function ($item, $index) {
+                    return [
+                        "@type" => "ListItem", 
+                        "position" => $index + 1, 
+                        "item" => [ 
+                            "@id" => $item[1] ?? "", 
+                            "name" => $item[0] 
+                        ]
+                    ];
+                }) !!}
+            }
         }
     </script>
 @endsection

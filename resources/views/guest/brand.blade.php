@@ -40,21 +40,37 @@
                     "valueName": "search_term_string"
                 }
             },
-            "itemListElement": [
-                @foreach ($data as $brand)
-                    {
-                        "@type": "ListItem",
-                        "position": {{ $loop->index + 1 }},
-                        "item": {
-                            "@type": "ListItem",
-                            "name": "{{ $brand->name }}",
-                            "url": "{{ route('views.guest.product', ['brand' => $brand->slug,]) }}",
-                            "image": "{{ $brand->Image->Link }}",
-                            "description": "{{ Core::subString($brand->description ?? __('Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.')) }}"
-                        }
-                    }{{ $loop->last ? '' : ',' }}
-                @endforeach
-            ]
+            "itemListElement": {!! $data->map(function($brand, $index){
+                return [
+                    "@type" => "ListItem",
+                    "position" => $index + 1,
+                    "item" => [
+                        "@type" => "ListItem",
+                        "name" => $brand->name,
+                        "url" => route('views.guest.product', ['brand' => $brand->slug]),
+                        "image" => $brand->Image->Link,
+                        "description" => Core::subString($brand->description ?? __('Discover a world of sophistication and style with ITALMENARA\'s product page. Explore meticulously crafted fashion pieces and refined accessories that redefine luxury and elegance, all available for online purchase.'))
+                    ]
+                ];
+            }) !!},
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem", 
+                    "position": 1, 
+                    "item": {
+                        "@id": "{{ route('views.guest.home') }}",
+                        "name": "{{ __('Home') }}"
+                    }
+                }, {
+                    "@type": "ListItem", 
+                    "position": 2, 
+                    "item": {
+                        "@id": "{{ route('views.guest.brand') }}",
+                        "name": "{{ __('Brands') }}"
+                    }
+                }]
+            }
         }
     </script>
 @endsection

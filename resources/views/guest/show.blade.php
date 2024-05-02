@@ -32,15 +32,36 @@
             "name": "{{ $data->name }}",
             "brand": "{{ $data->Brand->name }}",
             "category": "{{ $data->Category->name }}",
-            "image": "{{ $data->Images[0]->Link }}",
             "description": "{{ Core::subString($data->details ?? __('Indulge in luxury with ITALMENARA\'s exquisite product. Delve into the intricate details of each meticulously crafted item, from haute couture fashion to refined accessories, embodying Italian craftsmanship and contemporary elegance.')) }}",
+            "image": {
+                "@type": "ImageObject",
+                "name": "{{ $data->name }}",
+                "contentUrl": {!! $data->Images->map(function($image){ return $image->Link; }) !!},
+                "thumbnailUrl": {!! $data->Images->map(function($image){ return $image->Link; }) !!}
+            },
             "offers": {
-                "@type": "Offer",
+                "@type": "AggregateOffer",
                 "availability": "http://schema.org/InStock",
                 "url": "{{ Core::secure(url()->full()) }}",
                 "priceValidUntil": "{{ now()->format('Y-m-d') }}",
                 "priceCurrency": "EUR",
-                "price": "{{ $data->price }}"
+                "price": "{{ $data->price }}",
+                "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "name": "Return Policy",
+                    "url": "{{ route('views.guest.return') }}"
+                },
+                "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                        "@type": "MonetaryAmount",
+                        "value": {
+                            "@type": "QuantitativeValue",
+                            "value": "1000",
+                            "unitText": "EUR"
+                        }
+                    }
+                }
             },
             "aggregateRating": {
                 "@type": "AggregateRating",
@@ -87,6 +108,31 @@
                     "valueRequired": true,
                     "valueName": "search_term_string"
                 }
+            },
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem", 
+                    "position": 1, 
+                    "item": {
+                        "@id": "{{ route('views.guest.home') }}",
+                        "name": "{{ __('Home') }}"
+                    }
+                }, {
+                    "@type": "ListItem", 
+                    "position": 2, 
+                    "item": {
+                        "@id": "{{ route('views.guest.product') }}",
+                        "name": "{{ __('Products') }}"
+                    }
+                }, {
+                    "@type": "ListItem", 
+                    "position": 3, 
+                    "item": {
+                        "@id": "{{ route('views.guest.show', $data->slug) }}",
+                        "name": "{{ $data->name }}"
+                    }
+                }]
             }
         }
     </script>

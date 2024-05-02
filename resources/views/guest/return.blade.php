@@ -38,6 +38,24 @@
                     "valueName": "search_term_string"
                 }
             },
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem", 
+                    "position": 1, 
+                    "item": {
+                        "@id": "{{ route('views.guest.home') }}",
+                        "name": "{{ __('Home') }}"
+                    }
+                }, {
+                    "@type": "ListItem", 
+                    "position": 2, 
+                    "item": {
+                        "@id": "{{ route('views.guest.return') }}",
+                        "name": "{{ __('Return Policy') }}"
+                    }
+                }]
+            },
             "author": {
                 "@type": "Organization",
                 "name": "{{ env('APP_NAME') }}"
@@ -70,7 +88,7 @@
 
 @section('content')
     @include('shared.guest.nav', [
-        'items' => [[__('Home'), route('views.guest.home')], [__('Return Policy'), route('views.guest.term')]],
+        'items' => [[__('Home'), route('views.guest.home')], [__('Return Policy'), route('views.guest.return')]],
     ])
     <section class="w-full container mx-auto p-4 grid grid-rows-1 grid-cols-1 lg:grid-cols-6 gap-8">
         <div class="flex flex-col gap-6 lg:col-span-4">
